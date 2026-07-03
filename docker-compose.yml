@@ -1,0 +1,10 @@
+services:
+  rs-inventory-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rs-inventory-app:v1.0.0
+    container_name: rs-inventory-app
+    ports:
+      - "2002:8080"
+    restart: unless-stopped
