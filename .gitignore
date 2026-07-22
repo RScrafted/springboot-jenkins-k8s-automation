@@ -1,2 +1,9 @@
-DS_Store
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Maven / Build Output
 target/
+
+# Sensitive Kubernetes Credentials
+k8s/kubeconfig
