@@ -61,17 +61,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh """
-                    # 1. Apply base manifests directly
-                    kubectl apply -f k8s/deployment.yaml
-                    kubectl apply -f k8s/service.yaml
-
-                    # 2. Tell Kubernetes directly to update the container image
-                    kubectl set image deployment/${env.IMAGE_NAME} ${env.IMAGE_NAME}=${env.DOCKER_REGISTRY_USER}/${env.IMAGE_NAME}-${env.ENV}:${env.IMAGE_TAG}
-
-                    # 3. Wait for rollout
-                    kubectl rollout status deployment/${env.IMAGE_NAME} --timeout=60s
-                """
+                sh "kubectl apply -f k8s/"
             }
         }
     }
