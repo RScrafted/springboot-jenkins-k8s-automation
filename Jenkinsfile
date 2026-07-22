@@ -66,7 +66,7 @@ pipeline {
 
                     sh """
                         git checkout k8s/deployment.yaml
-                        sed -i 's|\${fullImageName}|${fullImage}|g' k8s/deployment.yaml
+                        sed -i "s|IMAGE_PLACEHOLDER|${fullImage}|g" k8s/deployment.yaml
                         kubectl apply -f k8s/deployment.yaml
                         kubectl apply -f k8s/service.yaml
                         kubectl rollout status deployment/${env.IMAGE_NAME} --timeout=60s
