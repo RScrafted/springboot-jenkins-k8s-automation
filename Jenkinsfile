@@ -61,19 +61,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh """
-                    # 1. Define the full image tag dynamically
-                    export FULL_IMAGE="${env.DOCKER_REGISTRY_USER}/${env.IMAGE_NAME}-${env.ENV}:${env.IMAGE_TAG}"
-
-                    # 2. Substitute ${FULL_IMAGE} in memory and apply directly
-                    envsubst < k8s/deployment.yaml | kubectl apply -f -
-
-                    # 3. Apply service
-                    kubectl apply -f k8s/service.yaml
-
-                    # 4. Wait for rollout completion
-                    kubectl rollout status deployment/${env.IMAGE_NAME} --timeout=60s
-                """
+                sh "kubectl apply -f k8s/"
             }
         }
     }
