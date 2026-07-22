@@ -67,8 +67,8 @@ pipeline {
                         fullImageName="${DOCKER_REGISTRY_USER}/${IMAGE_NAME}-${ENV}:${IMAGE_TAG}"
                         
                         # 2. Swap placeholder in file and apply
-                        sed -i "s|IMAGE_PLACEHOLDER|\${fullImageName}|g" k8s/deployment.yaml
-                        
+                        sed -i 's|IMAGE_PLACEHOLDER|${fullImage}|g' k8s/deployment.yaml
+
                         # 3. Apply manifests
                         kubectl apply -f k8s/deployment.yaml
                         kubectl apply -f k8s/service.yaml
