@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: rs-inventory-app
-        image: ${fullImageName}
+        image: rscrafted/rs-inventory-app-prodn:latest
         ports:
         - containerPort: 8080
         resources:

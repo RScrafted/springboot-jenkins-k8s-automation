@@ -59,22 +59,9 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes Cluster') {
+        stage('Deploy to Kubernetes') {
             steps {
-                withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
-                    sh """
-                        # 1. Define image variable right inside the shell
-                        fullImageName="${DOCKER_REGISTRY_USER}/${IMAGE_NAME}-${ENV}:${IMAGE_TAG}"
-                        
-                        # 2. Swap placeholder in file and apply
-                        sed -i "s|IMAGE_PLACEHOLDER|\${fullImageName}|g" k8s/deployment.yaml
-                        
-                        # 3. Apply manifests
-                        kubectl apply -f k8s/deployment.yaml
-                        kubectl apply -f k8s/service.yaml
-                        kubectl rollout status deployment/rs-inventory-app --timeout=60s
-                    """
-                }
+                sh "kubectl apply -f k8s/"
             }
         }
     }
