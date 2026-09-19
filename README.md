@@ -128,9 +128,9 @@ docker-compose down
 
 ![Docker Hub Registry Push](./images/docker-hub-registry-push.png)
 
-### Deploy to Kubernetes
+### Deploy to Kubernetes via Helm
 
-![Deploy to Kubernetes](./images/deploy-to-kubernetes.png)
+![Deploy to Kubernetes via Helm](./images/helm-deployment-status.png)
 
 
 ### Docker Hub Verification
