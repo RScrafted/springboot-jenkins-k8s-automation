@@ -65,10 +65,11 @@ pipeline {
         //     }
         // }
 
-        stage('Deploy via Helm')
+        stage('Deploy via Helm') {
             steps {
                 sh "helm upgrade --install rs-inventory-app ./helm/rs-inventory-app/ -f ./helm/rs-inventory-app/values.yaml"
             }
+        }
     }
 
     post {
