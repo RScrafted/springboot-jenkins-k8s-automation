@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rs-inventory-app-service
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: rs-inventory-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      # Standardized NodePort mapped to Docker Compose Port Number.
+      nodePort: {{ .Values.service.nodePort }}

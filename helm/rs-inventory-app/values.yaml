@@ -1,0 +1,9 @@
+replicaCount: 1
+
+image:
+  repository: rscrafted/rs-inventory-app-prodn
+  tag: latest
+
+service:
+  type: NodePort
+  nodePort: 32002
