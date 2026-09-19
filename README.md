@@ -50,6 +50,7 @@ This project demonstrates end-to-end automated CI/CD pipeline for a Spring Boot 
   * Configured label: `jenkins_agent1`.
   * Java 17 & Maven 3.9 configured via Jenkins Global Tools.
   * `kubectl` CLI installed ([Kubernetes Installation Guide](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)).
+  * `Helm` installed ([Installing Helm Guide](https://helm.sh/docs/intro/install/))
   * Cluster API access configured at `~/.kube/config` (or tracked via gitignored `k8s/kubeconfig`).
 
 * **Kubernetes Cluster**
@@ -175,6 +176,11 @@ sudo systemctl daemon-reload
 ```
 
 ### Resource Teardown
+
+```bash
+helm list
+helm uninstall rs-inventory-app
+```
 
 A helper script (`cleanup.sh`) is provided to tear down deployed Kubernetes resources:
 
