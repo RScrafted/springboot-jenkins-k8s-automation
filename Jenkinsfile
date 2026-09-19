@@ -59,11 +59,16 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        // stage('Deploy to Kubernetes') {
+        //     steps {
+        //         sh "kubectl apply -f k8s/"
+        //     }
+        // }
+
+        stage('Deploy via Helm')
             steps {
-                sh "kubectl apply -f k8s/"
+                sh "helm upgrade --install rs-inventory-app ./helm/rs-inventory-app/ -f ./helm/rs-inventory-app/values.yaml"
             }
-        }
     }
 
     post {
